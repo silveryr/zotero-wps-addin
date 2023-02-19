@@ -1,0 +1,48 @@
+HKCR
+{
+	ZoteroAddin.Connect = s 'ZoteroAddin class'
+	{
+		CLSID = s '{c18019c8-49f4-41f7-b26e-ba5aae3b3e8c}'
+		CurVer = s 'ZoteroAddin.Connect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {c18019c8-49f4-41f7-b26e-ba5aae3b3e8c} = s 'ZoteroAddin class'
+		{
+			ProgID = s 'ZoteroAddin.Connect.1'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{24a2f5e1-beaf-49fb-8d0c-fad05a79e558}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKCU
+{
+	Software
+	{
+		Microsoft
+		{
+			Office
+			{
+				Word
+				{
+					Addins
+					{
+						'ZoteroAddin.Connect'
+						{
+							val FriendlyName = s 'Zotero WPS插件'
+							val Description = s '为 WPS 开发的 Zotero COM 加载项'
+							val LoadBehavior = d '00000003'
+							val CommandLineSafe = d '00000001'
+						}
+					}
+				}
+			}
+		}
+	}
+}

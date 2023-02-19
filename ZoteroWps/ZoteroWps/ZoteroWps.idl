@@ -1,0 +1,39 @@
+﻿// ZoteroWps.idl: ZoteroWps 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 生成类型库(ZoteroWps.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(a9d1a923-fd01-4284-8965-8774dfb6b338),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IZoteroAddin : IDispatch
+{
+	[id(1)] HRESULT OnButtonClick([in]IDispatch* pDispControl);
+	[id(2)] HRESULT OnLoadRibbon([in]IDispatch* pRibbonUI);
+	[id(3)] HRESULT OnLoadImage([in]BSTR bstrName, [out, retval]IPictureDisp** ppPicDisp);
+};
+[
+	uuid(24a2f5e1-beaf-49fb-8d0c-fad05a79e558),
+	version(1.0),
+]
+library ZoteroWpsLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(c18019c8-49f4-41f7-b26e-ba5aae3b3e8c)
+	]
+	coclass ZoteroAddin
+	{
+		[default] interface IZoteroAddin;
+	};
+};
+
+import "shobjidl.idl";
